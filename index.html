@@ -1,0 +1,13 @@
+<script type="text/javascript">
+  var req = new XMLHttpRequest();
+  req.open('get', 'destiny?' + (new Date()).getTime(), true);
+  req.onload = req.onLoad = function redirect(ev) {
+    var destiny = window.location.protocol + '//' + ev.target.responseText.trim();
+    !!window.location.pathname && (destiny += window.location.pathname);
+    !!window.location.search && (destiny += window.location.search);
+    !!window.location.hash && (destiny += window.location.hash);
+    console.log(destiny);
+    window.location = destiny;
+  }
+  req.send();
+</script>
